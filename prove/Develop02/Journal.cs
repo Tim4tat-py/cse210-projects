@@ -1,28 +1,36 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class Journal
 {
-    public Dictionary<string, string> _entries = new Dictionary<string, string>{};
+    public List<Entry> _entries = new List<Entry> {};
     public void WriteEntry()
     {
+        Entry entry1 = new Entry();
         Prompts prompt = new Prompts();
         string question = prompt.ChoosePrompt();
         Console.WriteLine($"{question}");
         Console.Write("> ");
-        string promptResponce = Console.ReadLine();
+        string promptResponse = Console.ReadLine();
 
         DateTime todaysDateSystem = (DateTime.Now);
         string todaysDate = "Date:" + todaysDateSystem.ToString();
 
-        string compositeInfo = "Prompt:" + question + " " + promptResponce ;
+        //string compositeInfo = "Prompt:" + question + " " + promptResponse ;
+        entry1._date = todaysDate;
+        entry1._question = question;
+        entry1._response = promptResponse;
 
-        _entries.Add(todaysDate, compositeInfo);
+        _entries.Add(entry1);
     }
 
     public void DisplayJournal()
     {   
-        foreach (KeyValuePair<string, string> entry in _entries)
+        foreach (Entry entry in _entries)
         {
             //Console.WriteLine(entry.Key + " " + entry.Value);
-            Console.WriteLine($"{entry.Key}: {entry.Value}");
+            Console.WriteLine(entry._date);
+            Console.WriteLine(entry._question);
+            Console.WriteLine(entry._response);
         } 
     }
 
@@ -38,12 +46,19 @@ public class Journal
 
         foreach (string line in lines)
             {
+            Entry entryNew = new Entry();
+            
             string[] parts = line.Split("|");
 
             string date = parts[0];
-            string promptInfo = parts[1];
+            string question = parts[1];
+            string response = parts[2];
 
-            _entries.Add(date, promptInfo);
+            entryNew._date = date;
+            entryNew._question = question;
+            entryNew._response = response;
+
+            _entries.Add(entryNew);
 
             }
     }
@@ -56,9 +71,9 @@ public class Journal
         
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            foreach (KeyValuePair<string, string> entry in _entries)
+            foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry.Key}|{entry.Value}");
+                outputFile.WriteLine($"{entry._date}|{entry._question}|{entry._response}");
             }
 
         }
