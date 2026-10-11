@@ -21,25 +21,25 @@ class Program
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
             
-            int responce = int.Parse(Console.ReadLine());
+            int response = int.Parse(Console.ReadLine());
 
-            if (responce == 1)
+            if (response == 1)
             {
                 journal.WriteEntry();
             }
-            else if (responce == 2)
+            else if (response == 2)
             {
                 journal.DisplayJournal();
             }
-            else if (responce == 3)
+            else if (response == 3)
             {
                 journal.LoadJournal();
             }
-            else if (responce == 4)
+            else if (response == 4)
             {
                 journal.SaveJournal();
             }
-            else if (responce == 5)
+            else if (response == 5)
             {
                 Console.WriteLine("Goodbye");
                 power = false;

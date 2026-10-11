@@ -12,6 +12,10 @@ public class Journal
         Console.Write("> ");
         string promptResponse = Console.ReadLine();
 
+        Console.WriteLine("What is your mood?");
+        Console.Write("> ");
+        string moodRespose = Console.ReadLine();
+
         DateTime todaysDateSystem = (DateTime.Now);
         string todaysDate = "Date:" + todaysDateSystem.ToString();
 
@@ -19,6 +23,7 @@ public class Journal
         entry1._date = todaysDate;
         entry1._question = question;
         entry1._response = promptResponse;
+        entry1._mood = moodRespose;
 
         _entries.Add(entry1);
     }
@@ -31,6 +36,7 @@ public class Journal
             Console.WriteLine(entry._date);
             Console.WriteLine(entry._question);
             Console.WriteLine(entry._response);
+            Console.WriteLine(entry._mood);
         } 
     }
 
@@ -53,10 +59,12 @@ public class Journal
             string date = parts[0];
             string question = parts[1];
             string response = parts[2];
+            string mood = parts[3];
 
             entryNew._date = date;
             entryNew._question = question;
             entryNew._response = response;
+            entryNew._mood = mood;
 
             _entries.Add(entryNew);
 
@@ -73,7 +81,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}|{entry._question}|{entry._response}");
+                outputFile.WriteLine($"{entry._date}|{entry._question}|{entry._response}|{entry._mood}");
             }
 
         }
