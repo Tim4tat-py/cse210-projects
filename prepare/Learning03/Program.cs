@@ -4,6 +4,34 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning03 World!");
+        Fraction fraction1 = new Fraction();
+        Console.WriteLine(fraction1.GetFractionString());
+        Console.WriteLine(fraction1.GetDecimalValue());
+
+        Fraction fraction2 = new Fraction(5);
+        Console.WriteLine(fraction2.GetFractionString());
+        Console.WriteLine(fraction2.GetDecimalValue());
+
+        Fraction fraction3 = new Fraction(3, 4);
+        Console.WriteLine(fraction3.GetFractionString());
+        Console.WriteLine(fraction3.GetDecimalValue());
+
+        Fraction fraction4 = new Fraction (1, 3);
+        Console.WriteLine(fraction4.GetFractionString());
+        Console.WriteLine(fraction4.GetDecimalValue());
+
+        Random mrandom = new Random();
+        Fraction randomFraction= new Fraction();
+        for (int i = 0; i < 20; i ++)
+        {
+            int topValue = mrandom.Next(1, 11);
+            int bottomValue = mrandom.Next(1, 11);
+            randomFraction.SetTop(topValue);
+            randomFraction.SetBottom(bottomValue);
+
+            Console.WriteLine($"{randomFraction.GetFractionString()}");
+            Console.WriteLine($"{randomFraction.GetDecimalValue()}");
+
+        }
     }
 }
