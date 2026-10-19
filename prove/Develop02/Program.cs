@@ -1,9 +1,11 @@
 using System;
 using System.IO;
+using System.Transactions;
 class Program
 {
     static void Main(string[] args)
     {
+        int comment = 0;
         Journal journal = new Journal();
         bool power = true;
 
@@ -49,5 +51,9 @@ class Program
                 Console.WriteLine("That is an invalid option. Please try again.");
             }
         }
+        //I added a mood section to the entry and handled 
+        //the case where an unexpected input is put into
+        //the main section
     }
 }
+
