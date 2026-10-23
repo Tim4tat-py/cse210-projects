@@ -40,7 +40,8 @@ class Program
                 Console.WriteLine("Invalid input");
             }
 
-            
+            //I added the ablility for the user to enter their own
+            //scripture for them to memorise
         }
     }
 }
