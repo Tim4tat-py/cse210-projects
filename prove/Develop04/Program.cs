@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Metrics;
 
 class Program
 {
@@ -6,7 +7,7 @@ class Program
     {
         bool on = true;
         Console.Clear();
-
+        int counter1 = 0;
         while (on == true)
         {
             Console.Clear();
@@ -25,6 +26,8 @@ class Program
                 Console.Clear();
 
                 breathingActivity.AlternatingMessage();
+
+                counter1 += 1;
             }
 
             else if (selection == "2")
@@ -33,6 +36,8 @@ class Program
                 Console.Clear();
 
                 reflectingActivity.DisplayReflectionPrompt();
+
+                counter1 += 1;
             }
 
             else if (selection == "3")
@@ -41,6 +46,8 @@ class Program
                 Console.Clear();
 
                 listingActivity.DisplayPrompt();
+
+                counter1 += 1;
             }
 
             else if (selection == "4")
@@ -56,6 +63,8 @@ class Program
             }
 
         }
+        Console.Clear();
+        Console.WriteLine($"You did {counter1} activities");
         
     }
 }
