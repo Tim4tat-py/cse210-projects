@@ -67,4 +67,6 @@ class Program
         Console.WriteLine($"You did {counter1} activities");
         
     }
+    //I added the ability to count how many activies were done
+    // which is displayed when you end the program
 }
