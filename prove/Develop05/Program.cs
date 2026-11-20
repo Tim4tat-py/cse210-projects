@@ -59,7 +59,7 @@ class Program
                 Console.WriteLine("  3. Checklist Goal");
                 Console.Write("Which type of goal would you like to create? ");
                 
-                string typeSelection = Console.ReadLine();
+                string typeSelection = Console.ReadLine(); //Here
 
                 if (typeSelection == "1") // Create simple goal
                 {
@@ -101,17 +101,7 @@ class Program
                     {
                         digital = "[ ]";
                     }
-
-                    if (goal is SimpleGoal or EternalGoal)
-                    {
-                        Console.WriteLine($"{index}. {digital} {goal.GetName()} ({goal.GetDescription()})");
-                    }
-                    else
-                    {
-                        ChecklistGoal altered = (ChecklistGoal)goal;
-                        Console.WriteLine($"{index}. {digital} {altered.GetName()} ({altered.GetDescription()}) --- Currently Completed: {altered.GetTimesCompleted()}/{altered.GetTimesCompltedGoal()}");
-                    }
-
+                    Console.WriteLine($"{index}. {digital} {goal.GetGoalDisplay()}");
                 }
 
             }
@@ -127,22 +117,8 @@ class Program
 
                     foreach (Goal goal in goals)
                     {
-                        if (goal is SimpleGoal)
-                        {
-                            outputFile.WriteLine($"SimpleGoal:{goal.GetName()},{goal.GetDescription()},{goal.GetValue()},{goal.GetIsComplete()}");
-                        }
-                        else if (goal is EternalGoal)
-                        {
-                            outputFile.WriteLine($"EternalGoal:{goal.GetName()},{goal.GetDescription()},{goal.GetValue()},{goal.GetIsComplete()}");
-                        }
-                        else if (goal is ChecklistGoal)
-                        {
-                            ChecklistGoal alteredGoal = (ChecklistGoal)goal;
-                            outputFile.WriteLine($"ChecklistGoal:{alteredGoal.GetName()},{alteredGoal.GetDescription()},{alteredGoal.GetValue()},{alteredGoal.GetIsComplete()},{alteredGoal.GetBonusValue()},{alteredGoal.GetTimesCompleted()},{alteredGoal.GetTimesCompltedGoal()}");
-                        }
-                        
+                            outputFile.WriteLine(goal.GetGoalInfo());                        
                     }
-
                 }
             }
             else if (choiceSelection == "4") //Load goals
@@ -163,7 +139,7 @@ class Program
                     string type = halves[0];
                     string info = halves[1];    
                 
-                    if (type == "SimpleGoal")
+                    if (type == "SimpleGoal") // Here
                     {
                         SimpleGoal simpleGoal = new SimpleGoal();
                         string[] part = info.Split(",");
@@ -217,8 +193,7 @@ class Program
 
                         goals.Add(checklistGoal);
                     }
-
-            }
+                }
             }
             else if (choiceSelection == "5") //Record event
             {

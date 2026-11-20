@@ -54,7 +54,16 @@ public class ChecklistGoal : Goal
         if (GetTimesCompleted() == GetTimesCompltedGoal())
         {
             SetIsComplete(true);
+            return GetValue() + GetBonusValue();
         }
-        return (GetValue() + GetBonusValue());
+        return GetValue();
+    }
+    public override string GetGoalDisplay()
+    {
+        return $"{GetName()} {GetDescription()} --- Currently Completed: {GetTimesCompleted()}/{GetTimesCompltedGoal()}";
+    }
+    public override string GetGoalInfo()
+    {
+        return $"ChecklistGoal:{GetName()},{GetDescription()},{GetValue()},{GetIsComplete()},{GetBonusValue()},{GetTimesCompleted()},{GetTimesCompltedGoal()}";
     }
 }

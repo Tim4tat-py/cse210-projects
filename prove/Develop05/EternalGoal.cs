@@ -11,4 +11,12 @@ public class EternalGoal : Goal
     {
         return GetValue();
     }
+     public override string GetGoalDisplay()
+    {
+        return $"{GetName()} ({GetDescription()})";
+    }
+    public override string GetGoalInfo()
+    {
+        return $"EternalGoal:{GetName()},{GetDescription()},{GetValue()},{GetIsComplete()}";
+    }
 }

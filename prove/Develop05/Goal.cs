@@ -59,4 +59,6 @@ public abstract class Goal
         _isComplete = complete;
     }
     public abstract int RecordEvent();
+    public abstract string GetGoalDisplay();
+    public abstract string GetGoalInfo();
 }
