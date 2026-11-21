@@ -222,5 +222,5 @@ class Program
             }
         }
         
-    }
+    } // added for extra credit was the leveling system shown at the top of this program
 }
